@@ -42,6 +42,7 @@ bool signTxPoolRegistration_isFinished()
 	default:
 		ASSERT(false);
 	}
+	return false;
 }
 
 void signTxPoolRegistration_init()

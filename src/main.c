@@ -213,10 +213,10 @@ __attribute__((section(".boot"))) int main(void)
 {
 	// exit critical section
 	__asm volatile("cpsie i");
+	os_boot();
 
 	for (;;) {
 		UX_INIT();
-		os_boot();
 		BEGIN_TRY {
 			TRY {
 				io_seproxyhal_init();

@@ -36,6 +36,7 @@ bool signTxCatalystRegistration_isFinished()
 	default:
 		ASSERT(false);
 	}
+	return false;
 }
 
 void signTxCatalystRegistration_init()

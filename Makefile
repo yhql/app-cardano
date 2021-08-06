@@ -124,18 +124,19 @@ endif
 
 ifeq ($(TARGET_NAME),TARGET_NANOX)
 WERROR   := -Werror=return-type
+LDLIBS   += -lm -lgcc -lc
 else
 WERROR   := -Werror=incompatible-pointer-types -Werror=return-type
 endif
 
 CC       := $(CLANGPATH)clang
+# CC       := arm-none-eabi-gcc
 CFLAGS   += -std=gnu11 -O3 -Os -Wall -Wextra -Wuninitialized $(WERROR)
 
 AS       := $(GCCPATH)arm-none-eabi-gcc
 LD       := $(GCCPATH)arm-none-eabi-gcc
 
 LDFLAGS  += -O3 -Os -Wall
-LDLIBS   += -lm -lgcc -lc
 
 ##Enable to strip debug info from app
 #LDFLAGS  += -Wl,-s

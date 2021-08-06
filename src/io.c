@@ -4,7 +4,7 @@
 io_state_t io_state;
 
 #if defined(TARGET_NANOS)
-static timeout_callback_fn_t* timeout_cb;
+timeout_callback_fn_t* timeout_cb;
 
 void nanos_clear_timer()
 {

@@ -33,6 +33,7 @@ bool signTxOutput_isFinished()
 	default:
 		ASSERT(false);
 	}
+	return false;
 }
 
 void signTxOutput_init()

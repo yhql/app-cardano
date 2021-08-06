@@ -1,3 +1,5 @@
+This version is an experiment to be used with the [`-fPIC` SDK](https://github.com/yhql/nanos-secure-sdk). It will only run in speculos, not on a real device.
+
 # Cardano Ledger App
 
 Cardano Ledger App for Ledger Nano S
