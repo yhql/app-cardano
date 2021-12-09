@@ -3,6 +3,7 @@
 #include "cx.h"
 
 #include "signTx.h"
+#include "deriveNativeScriptHash.h"
 #include "getPublicKeys.h"
 
 ux_state_t G_ux;
@@ -37,6 +38,18 @@ void signOpCert_handleAPDU_no_throw(uint8_t p1, uint8_t p2, uint8_t *wireBuffer,
     } END_TRY;
 }
 
+void deriveNativeScriptHash_handleAPDU_no_throw(uint8_t p1, uint8_t p2, uint8_t *wireBuffer, size_t wireSize, bool isNewCall) {
+      BEGIN_TRY {
+        TRY {
+            deriveNativeScriptHash_handleAPDU(p1, p2, wireBuffer, wireSize, isNewCall);
+            }
+        CATCH_ALL {
+        } 
+        FINALLY {
+        }
+    } END_TRY;
+}
+
 int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
 
   UX_INIT();
@@ -52,6 +65,9 @@ int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
     uint8_t lc = input[3];
 
     switch (ins) {
+      case 0x12:
+          deriveNativeScriptHash_handleAPDU_no_throw(p1, p2, &input[4], lc, is_first);
+          break;
       case 0x22:
           signOpCert_handleAPDU_no_throw(p1, p2, &input[4], lc, is_first);
           break;

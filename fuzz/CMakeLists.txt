@@ -85,14 +85,17 @@ set(SOURCES
 		../src/cardano.c
 		../src/cbor.c
 		../src/crc32.c
+		../src/deriveNativeScriptHash.c
 		../src/io.c
 		../src/ipUtils.c
 		../src/keyDerivation.c
 		../src/hexUtils.c
 		../src/messageSigning.c
+		../src/nativeScriptHashBuilder.c
 		../src/securityPolicy.c
 		../src/signOpCert.c
 		../src/signTx.c
+		../src/signTxMint.c
 		../src/signTxOutput.c
 		../src/state.c
 		../src/signTxPoolRegistration.c

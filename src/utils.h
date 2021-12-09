@@ -23,8 +23,14 @@
 	(sizeof(__typeof(int[0 - (sizeof(var) == sizeof((void *)0))])) * 0)
 
 // Safe version of SIZEOF, does not compile if you accidentally supply a pointer
+#ifndef FUZZING
 #define SIZEOF(var) \
 	(sizeof(var) + SIZEOF_NOT_A_PTR(var))
+#else
+// While fuzzing, assume the code is already correct
+// this avoids a false positive in SIZEOF_NOT_A_PTR on x64
+#define SIZEOF(var) sizeof(var)
+#endif
 
 
 #define ASSERT_TYPE(expr, expected_type) \
